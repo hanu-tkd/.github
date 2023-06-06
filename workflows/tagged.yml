@@ -1,0 +1,17 @@
+name: New Tag Notification
+
+on:
+  create:
+    tags:
+      - '*'
+
+jobs:
+  notify_teams:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Notify Teams
+        run: |
+          echo "New tag ${{ github.ref }} has been created in repository ${{ github.repository }}."
